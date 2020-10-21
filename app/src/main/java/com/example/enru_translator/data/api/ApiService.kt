@@ -1,12 +1,12 @@
-package com.example.enru_translator.data.net
+package com.example.enru_translator.data.api
 
-import androidx.lifecycle.LiveData
 import com.example.enru_translator.common.KEY_API
 import com.example.enru_translator.common.TRANSLATOR_URL
+import com.example.enru_translator.data.model.WordPojo
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface Api {
+interface ApiService {
 
     @GET(TRANSLATOR_URL)
     suspend fun search(
@@ -19,5 +19,5 @@ interface Api {
         @Query("lang")
         lang: String = "en-ru"
 
-    ): LiveData<WordPojo>
+    ): WordPojo
 }

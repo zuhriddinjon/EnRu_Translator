@@ -1,0 +1,12 @@
+package com.example.enru_translator.data.local
+
+import com.example.enru_translator.data.local.entity.Word
+
+interface IDBHelper {
+
+    suspend fun getSearch(): Word?
+
+    suspend fun insert(word: Word)
+
+    suspend fun getAll(): List<Word>
+}

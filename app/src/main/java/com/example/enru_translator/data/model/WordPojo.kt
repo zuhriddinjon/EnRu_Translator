@@ -1,4 +1,4 @@
-package com.example.enru_translator.data.net
+package com.example.enru_translator.data.model
 
 import com.google.gson.annotations.SerializedName
 
@@ -8,7 +8,7 @@ data class MainWord(
     val text: String,
     val ts: String,
     @SerializedName("tr")
-    val translate: List<Translates>
+    val translates: List<Translates>
 )
 
 data class Translates(
@@ -17,7 +17,6 @@ data class Translates(
     @SerializedName("syn")
     val synonym: List<Synonym>
 )
-
 
 data class Synonym(
     @SerializedName("text")

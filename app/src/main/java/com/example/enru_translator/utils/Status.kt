@@ -1,4 +1,4 @@
-package com.example.enru_translator.common
+package com.example.enru_translator.utils
 
 enum class Status {
     SUCCESS,

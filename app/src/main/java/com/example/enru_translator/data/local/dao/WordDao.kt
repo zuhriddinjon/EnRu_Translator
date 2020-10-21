@@ -1,12 +1,10 @@
-package com.example.enru_translator.data.db
+package com.example.enru_translator.data.local.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.enru_translator.data.model.Word
-import kotlinx.coroutines.flow.Flow
+import com.example.enru_translator.data.local.entity.Word
 
 @Dao
 interface WordDao {
@@ -15,10 +13,10 @@ interface WordDao {
     fun insert(word: Word)
 
     @Query("select * from word where wordEn=:it limit 1")
-    fun search(it: String): Flow<Word>
+    fun search(it: String): Word?
 
     @Query("select * from word")
-    fun allWord(): Flow<List<Word>>
+    fun allWord(): List<Word>
 
     @Query("delete from word")
     fun clearWord()
