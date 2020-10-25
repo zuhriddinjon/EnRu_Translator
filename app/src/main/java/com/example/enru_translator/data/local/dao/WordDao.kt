@@ -1,9 +1,6 @@
 package com.example.enru_translator.data.local.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.enru_translator.data.local.entity.Word
 
 @Dao
@@ -20,4 +17,7 @@ interface WordDao {
 
     @Query("delete from word")
     fun clearWord()
+
+    @Delete()
+    fun delete(word: Word)
 }

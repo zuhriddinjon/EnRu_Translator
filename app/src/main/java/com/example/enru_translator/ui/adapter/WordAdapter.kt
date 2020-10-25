@@ -12,6 +12,8 @@ import kotlinx.android.synthetic.main.item_layout.*
 class WordAdapter(
     private val words: ArrayList<Word>
 ) : RecyclerView.Adapter<WordAdapter.DataViewHolder>() {
+    private var lastRemovedPos: Int = 0
+    private var lastRemovedWord: Word? = null
 
     class DataViewHolder(override val containerView: View) :
         RecyclerView.ViewHolder(containerView), LayoutContainer {
@@ -36,6 +38,21 @@ class WordAdapter(
 
     fun addData(it: List<Word>) {
         words.addAll(it)
+    }
+
+    fun removedItemByPos(pos: Int): Word {
+//        val word = words.removeAt(pos)
+        lastRemovedWord = words.removeAt(pos)
+        lastRemovedPos = pos
+//        notifyDataSetChanged()
+        notifyItemRemoved(pos)
+        return lastRemovedWord!!
+    }
+
+    fun undoLastRemovedItem(): Word {
+        words.add(lastRemovedPos, lastRemovedWord!!)
+        notifyItemInserted(lastRemovedPos)
+        return lastRemovedWord!!
     }
 
 }

@@ -22,7 +22,7 @@ import java.util.*
 class TranslatorFragment : Fragment(), TextToSpeech.OnInitListener {
 
     private lateinit var viewModel: TranslatorViewModel
-    private lateinit var tts: TextToSpeech
+    private val tts by lazy { TextToSpeech(requireContext(), this) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,7 +38,6 @@ class TranslatorFragment : Fragment(), TextToSpeech.OnInitListener {
 
         setupViewModel()
         setupObserver()
-        tts = TextToSpeech(requireContext(), this)
 
         btn_search.setOnClickListener { search() }
         et_search.setOnKeyListener { v, keyCode, event ->
@@ -115,8 +114,8 @@ class TranslatorFragment : Fragment(), TextToSpeech.OnInitListener {
     }
 
     override fun onDestroy() {
+        super.onDestroy()
         tts.stop()
         tts.shutdown()
-        super.onDestroy()
     }
 }

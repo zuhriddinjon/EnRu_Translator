@@ -9,4 +9,7 @@ interface IDBHelper {
     suspend fun insert(word: Word)
 
     suspend fun getAll(): List<Word>
+
+    suspend fun delete(word: Word)
+
 }

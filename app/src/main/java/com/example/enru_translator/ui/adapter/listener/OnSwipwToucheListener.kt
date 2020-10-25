@@ -58,8 +58,14 @@ class OnSwipeTouchListener(ctx: Context?) : OnTouchListener {
 
     }
 
-    fun onSwipeRight() {}
-    fun onSwipeLeft() {}
+    fun onSwipeRight() {
+
+    }
+
+    fun onSwipeLeft() {
+
+    }
+
     fun onSwipeTop() {}
     fun onSwipeBottom() {}
 
