@@ -17,7 +17,7 @@ class WordAdapter(
         RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bind(word: Word) {
             tv_eng.text = word.wordEn
-            tv_ru.text = word.translates
+            tv_ru.text = word.wordRu
         }
     }
 

@@ -6,6 +6,12 @@
     android:background="@drawable/shape_aval"
     android:orientation="horizontal">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="1.6"
+        android:background="@drawable/american_flag" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_eng"
@@ -15,6 +21,13 @@
         android:padding="8dp"
         android:text="TextView"
         android:textColor="@color/black" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="1.6"
+        android:background="@drawable/russian_flag" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_ru"

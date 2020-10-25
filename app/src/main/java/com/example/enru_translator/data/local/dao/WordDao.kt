@@ -12,7 +12,7 @@ interface WordDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(word: Word)
 
-    @Query("select * from word where wordEn=:it limit 1")
+    @Query("select * from word where (wordEn=:it or wordRu =:it) limit 1")
     fun search(it: String): Word?
 
     @Query("select * from word")

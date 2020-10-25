@@ -9,7 +9,7 @@ import androidx.room.TypeConverters
 @TypeConverters(Converters::class)
 class Word(
     val wordEn: String,
-    val translates: String,
+    val wordRu: String,
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0
 )

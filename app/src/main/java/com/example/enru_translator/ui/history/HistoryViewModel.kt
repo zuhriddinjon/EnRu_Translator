@@ -1,4 +1,4 @@
-package com.example.enru_translator.ui.gallery
+package com.example.enru_translator.ui.history
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +8,7 @@ import com.example.enru_translator.data.local.entity.Word
 import com.example.enru_translator.utils.Resource
 import kotlinx.coroutines.launch
 
-class GalleryViewModel(private val dbHelper: IDBHelper) : ViewModel() {
+class HistoryViewModel(private val dbHelper: IDBHelper) : ViewModel() {
 
     private val list = MutableLiveData<Resource<List<Word>>>()
 

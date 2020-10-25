@@ -35,7 +35,7 @@ class WordPojoAdapter(
     class DataViewHolder(override val containerView: View) :
         RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bind(word: Word) {
-            tv_trans.text = word.translates
+            tv_trans.text = word.wordRu
         }
     }
 

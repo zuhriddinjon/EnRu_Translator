@@ -23,9 +23,9 @@ class WordVM(private val apiHelper: IApiHelper, private val dbHelper: IDBHelper)
         viewModelScope.launch {
             word.postValue(Resource.loading(null))
             try {
-                val wordFromDb = dbHelper.getSearch()
+                val wordFromDb = dbHelper.getSearch("")
                 if (wordFromDb == null) {
-                    val wordFromApi = apiHelper.getSearch()
+                    val wordFromApi = apiHelper.getSearch("")
                     val wordToInsertInDB = Word(
                         wordFromApi.def[0].text,
                         wordFromApi.def[0].translates[0].translateText

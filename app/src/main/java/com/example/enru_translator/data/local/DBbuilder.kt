@@ -3,7 +3,7 @@ package com.example.enru_translator.data.local
 import android.content.Context
 import androidx.room.Room
 
-object DatabaseBuilder {
+object DBbuilder {
 
     private var instance: WordDB? = null
 

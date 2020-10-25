@@ -24,11 +24,12 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@drawable/ic_launcher_background"
+        android:theme="@style/MyThemeOverlay_Toolbar"
         app:layout_anchor="@+id/appBarLayout"
         app:layout_anchorGravity="center"
         app:popupTheme="@style/Theme.EnRu_Translator.PopupOverlay"
