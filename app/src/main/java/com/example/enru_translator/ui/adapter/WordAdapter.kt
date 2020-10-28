@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.enru_translator.R
 import com.example.enru_translator.data.local.entity.Word
-import com.example.enru_translator.ui.history.listener.ItemTouchHelperAdapter
+import com.example.enru_translator.ui.history.listener.swipe.ItemTouchHelperAdapter
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_layout.*
 import java.util.*

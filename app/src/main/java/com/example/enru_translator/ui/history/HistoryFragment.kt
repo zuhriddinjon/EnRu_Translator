@@ -1,15 +1,11 @@
 package com.example.enru_translator.ui.history
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -19,11 +15,10 @@ import com.example.enru_translator.data.local.DBbuilder
 import com.example.enru_translator.data.local.IDBHelper
 import com.example.enru_translator.data.local.entity.Word
 import com.example.enru_translator.ui.adapter.WordAdapter
-import com.example.enru_translator.ui.adapter.listener.MySwipeCallback
+import com.example.enru_translator.ui.history.listener.swipe.MySwipeCallback
 import com.example.enru_translator.ui.history.listener.click.*
 import com.example.enru_translator.utils.Status
 import kotlinx.android.synthetic.main.fragment_history.*
-import kotlinx.android.synthetic.main.item_dialog.*
 
 
 class HistoryFragment : Fragment() {
@@ -39,7 +34,7 @@ class HistoryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        adapter = WordAdapter(arrayListOf())
+
         dbHelper = DBHelperImpl(DBbuilder.getInstance(requireContext()))
         viewModel =
             ViewModelProvider(
@@ -89,7 +84,6 @@ class HistoryFragment : Fragment() {
                         adapter = WordAdapter(it as ArrayList<Word>)
                         list = it
                         rv_history.adapter = adapter
-                        Log.d("setupObserver: ", "yana")
                         setupSwipeListener()
                     }
                     rv_history.visibility = View.VISIBLE

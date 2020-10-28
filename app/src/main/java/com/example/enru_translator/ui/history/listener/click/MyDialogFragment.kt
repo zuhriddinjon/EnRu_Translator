@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import com.example.enru_translator.R
-import com.example.enru_translator.common.TextSpeechListener
+import com.example.enru_translator.ui.util.TextSpeechListener
 import kotlinx.android.synthetic.main.item_dialog.view.*
 
 

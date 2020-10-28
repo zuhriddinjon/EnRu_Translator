@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.enru_translator.R
-import com.example.enru_translator.common.TextSpeechListener
+import com.example.enru_translator.ui.util.TextSpeechListener
 import com.example.enru_translator.data.api.ApiHelperImpl
 import com.example.enru_translator.data.api.RetrofitBuilder
 import com.example.enru_translator.data.local.DBHelperImpl
@@ -40,6 +40,10 @@ class TranslatorFragment : Fragment() {
         setupViewModel()
         setupObserver()
 
+        setOnClick()
+    }
+
+    private fun setOnClick() {
         btn_search.setOnClickListener { search() }
         et_search.setOnKeyListener { v, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_ENTER) {

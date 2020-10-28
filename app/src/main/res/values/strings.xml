@@ -12,5 +12,5 @@
     <string name="menu_about">About</string>
     <string name="zuhriddinjonrayimjonov_gmail_com">zuhriddinjonrayimjonov@gmail.com</string>
     <string name="en_ru"><![CDATA[En<->Ru]]></string>
-    <string name="text_about">Hello this is english to russian and russian to english translator</string>
+    <string name="text_about"><![CDATA[Hi dear user... This application can offer you smart way of translating English & Russian words. It can help you to find and save words which you search, firstly on internet, and you do not have to address internet in a second time.  We also added english and russian text-to-speech technology in order to provide your convenience. And our android developers group, of course at your service, and will workd on new version of this product. With all respect Rayimjanov Zuhriddinjon...]]></string>
 </resources>

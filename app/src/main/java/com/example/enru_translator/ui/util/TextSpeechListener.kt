@@ -1,4 +1,4 @@
-package com.example.enru_translator.common
+package com.example.enru_translator.ui.util
 
 import android.content.Context
 import android.speech.tts.TextToSpeech

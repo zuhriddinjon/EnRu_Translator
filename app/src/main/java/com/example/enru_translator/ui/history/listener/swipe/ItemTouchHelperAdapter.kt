@@ -1,4 +1,4 @@
-package com.example.enru_translator.ui.history.listener
+package com.example.enru_translator.ui.history.listener.swipe
 
 import com.example.enru_translator.data.local.entity.Word
 

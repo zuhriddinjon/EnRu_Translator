@@ -1,4 +1,4 @@
-package com.example.enru_translator.ui.adapter.listener
+package com.example.enru_translator.ui.history.listener.swipe
 
 import android.content.Context
 import android.graphics.Canvas
@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.enru_translator.R
 import com.example.enru_translator.data.local.DBHelperImpl
 import com.example.enru_translator.data.local.DBbuilder
-import com.example.enru_translator.ui.history.listener.ItemTouchHelperAdapter
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
