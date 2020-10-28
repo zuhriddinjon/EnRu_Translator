@@ -6,6 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".ui.splash.SplashActivity">
 
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_splash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/ic_launcher_background"
+        android:theme="@style/ToolBarStyle"
+        app:layout_anchorGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/Theme.EnRu_Translator.PopupOverlay"
+        app:subtitleTextColor="@color/white"
+        app:titleTextColor="@color/white" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageView"
         android:layout_width="72dp"

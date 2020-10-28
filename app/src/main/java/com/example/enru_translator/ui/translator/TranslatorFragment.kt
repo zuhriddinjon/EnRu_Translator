@@ -1,7 +1,6 @@
 package com.example.enru_translator.ui.translator
 
 import android.os.Bundle
-import android.speech.tts.TextToSpeech
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -11,18 +10,18 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.enru_translator.R
+import com.example.enru_translator.common.TextSpeechListener
 import com.example.enru_translator.data.api.ApiHelperImpl
 import com.example.enru_translator.data.api.RetrofitBuilder
 import com.example.enru_translator.data.local.DBHelperImpl
 import com.example.enru_translator.data.local.DBbuilder
 import com.example.enru_translator.utils.Status
 import kotlinx.android.synthetic.main.fragment_translator.*
-import java.util.*
 
-class TranslatorFragment : Fragment(), TextToSpeech.OnInitListener {
+class TranslatorFragment : Fragment() {
 
     private lateinit var viewModel: TranslatorViewModel
-    private val tts by lazy { TextToSpeech(requireContext(), this) }
+    private var tsl: TextSpeechListener? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,6 +35,8 @@ class TranslatorFragment : Fragment(), TextToSpeech.OnInitListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        tsl = TextSpeechListener(requireContext())
+
         setupViewModel()
         setupObserver()
 
@@ -47,8 +48,8 @@ class TranslatorFragment : Fragment(), TextToSpeech.OnInitListener {
             }
             return@setOnKeyListener false
         }
-        btn_speak_en.setOnClickListener { speakFromText(tv_en.text) }
-        btn_speak_ru.setOnClickListener { speakFromText(tv_rus.text) }
+        btn_speak_en.setOnClickListener { tsl!!.speakFromText(tv_en.text) }
+        btn_speak_ru.setOnClickListener { tsl!!.speakFromText(tv_rus.text) }
     }
 
     private fun search() {
@@ -99,23 +100,5 @@ class TranslatorFragment : Fragment(), TextToSpeech.OnInitListener {
         })
     }
 
-    override fun onInit(status: Int) {
-        if (status == TextToSpeech.SUCCESS) {
-            val locale = Locale("ru")
-            tts.language = locale
-            tts.setPitch(1.3f)
-            tts.setSpeechRate(0.9f)
-            tts.isLanguageAvailable(locale)
-        }
-    }
 
-    private fun speakFromText(text: CharSequence) {
-        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        tts.stop()
-        tts.shutdown()
-    }
 }

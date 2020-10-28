@@ -12,4 +12,5 @@
     <string name="menu_about">About</string>
     <string name="zuhriddinjonrayimjonov_gmail_com">zuhriddinjonrayimjonov@gmail.com</string>
     <string name="en_ru"><![CDATA[En<->Ru]]></string>
+    <string name="text_about">Hello this is english to russian and russian to english translator</string>
 </resources>

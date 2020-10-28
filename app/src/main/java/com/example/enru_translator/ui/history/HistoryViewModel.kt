@@ -23,7 +23,7 @@ class HistoryViewModel(private val dbHelper: IDBHelper) : ViewModel() {
                 val list1 = dbHelper.getAll()
                 list.postValue(Resource.success(list1))
             } catch (e: Exception) {
-                list.postValue(Resource.error("Gallery is empty", null))
+                list.postValue(Resource.error("History is empty", null))
 
             }
         }

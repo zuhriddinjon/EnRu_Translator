@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/ic_launcher_background"
     tools:context=".ui.translator.TranslatorFragment">
 
 
@@ -15,7 +16,7 @@
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_marginEnd="8dp"
         android:background="@drawable/shape_aval"
-        android:hint="Edit searched text"
+        android:hint="Edit text english or russian"
         android:imeOptions="actionSearch"
         android:inputType="text"
         android:lines="1"

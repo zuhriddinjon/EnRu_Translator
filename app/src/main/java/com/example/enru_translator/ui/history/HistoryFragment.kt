@@ -1,38 +1,45 @@
 package com.example.enru_translator.ui.history
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.RecyclerView
 import com.example.enru_translator.R
 import com.example.enru_translator.data.local.DBHelperImpl
 import com.example.enru_translator.data.local.DBbuilder
 import com.example.enru_translator.data.local.IDBHelper
 import com.example.enru_translator.data.local.entity.Word
 import com.example.enru_translator.ui.adapter.WordAdapter
+import com.example.enru_translator.ui.adapter.listener.MySwipeCallback
+import com.example.enru_translator.ui.history.listener.click.*
 import com.example.enru_translator.utils.Status
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_history.*
-import kotlinx.coroutines.launch
+import kotlinx.android.synthetic.main.item_dialog.*
+
 
 class HistoryFragment : Fragment() {
 
     private lateinit var viewModel: HistoryViewModel
-    private lateinit var adapter: WordAdapter
+    private var adapter: WordAdapter? = null
     private lateinit var dbHelper: IDBHelper
+    private var list: ArrayList<Word>? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+//        adapter = WordAdapter(arrayListOf())
         dbHelper = DBHelperImpl(DBbuilder.getInstance(requireContext()))
         viewModel =
             ViewModelProvider(
@@ -48,40 +55,27 @@ class HistoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObserver()
-        setupSwipeListener()
+
+        itemClicked()
     }
 
-    private fun setupSwipeListener() {
-        val callback = /*MySwipeCallback(adapter, requireContext().applicationContext)*/
-            object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
-                override fun onMove(
-                    recyclerView: RecyclerView,
-                    viewHolder: RecyclerView.ViewHolder,
-                    target: RecyclerView.ViewHolder
-                ): Boolean {
-                    return false
-                }
+    private fun itemClicked() {
+        // Usage:
+        rv_history.addOnItemClickListener(object : ItemClickListener {
+            override fun onItemClicked(position: Int, view: View) {
 
-                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                    val pos = viewHolder.adapterPosition
-                    val word = adapter.removedItemByPos(pos)
-                    showSnackbar()
-                lifecycleScope.launch { dbHelper.delete(word) }
-//                CoroutineScope(Dispatchers.IO).launch { dbHelper.delete(word) }
-
-                }
-
-                private fun showSnackbar() {
-                    val snackbar = Snackbar.make(view!!, "Undo item", Snackbar.LENGTH_SHORT)
-                    snackbar.setAction("undo", View.OnClickListener {
-                        val word = adapter.undoLastRemovedItem()
-                        lifecycleScope.launch { dbHelper.insert(word) }
-                    })
-                    snackbar.show()
-                }
+                val texten = adapter!!.getWord(position).wordEn
+                val textru = adapter!!.getWord(position).wordRu
+               val fragment=SimpleDialog.newInstance(texten,textru)
+                fragment.show(parentFragmentManager, SimpleDialog.TAG)
 
             }
+        })
+    }
 
+
+    private fun setupSwipeListener() {
+        val callback = MySwipeCallback(adapter!!, requireContext())
         val helper = ItemTouchHelper(callback)
         helper.attachToRecyclerView(rv_history)
     }
@@ -93,7 +87,10 @@ class HistoryFragment : Fragment() {
                     pb_history.visibility = View.GONE
                     it.data?.let {
                         adapter = WordAdapter(it as ArrayList<Word>)
+                        list = it
                         rv_history.adapter = adapter
+                        Log.d("setupObserver: ", "yana")
+                        setupSwipeListener()
                     }
                     rv_history.visibility = View.VISIBLE
                 }

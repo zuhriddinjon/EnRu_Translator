@@ -12,5 +12,5 @@ class DBHelperImpl(private val wordDB: WordDB) : IDBHelper {
 
     override suspend fun getAll() = wordDB.wordDao().allWord()
 
-    override suspend fun delete(word: Word) = wordDB.wordDao().delete(word)
+    override suspend fun delete(word: Word) = wordDB.wordDao().delete(word.wordRu)
 }
